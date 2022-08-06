@@ -19,7 +19,6 @@ jobs:
   CI:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       
@@ -48,7 +47,7 @@ jobs:
         - name: Kubernetes Set Context
           uses: Azure/k8s-set-context@v3.0
           with:
-            method: kubeconfig # default is kubeconfig
+            method: kubeconfig
             kubeconfig: ${{secrets.K8S_CONFIG}}
         
         - name: Deploy to Kubernetes cluster
@@ -56,8 +55,3 @@ jobs:
           with:
             images: eudespaz/kubnews:${{github.run_number}}
             manifests: k8s/deployment.yaml
-            
-            
-        
-      
-            
